@@ -1,0 +1,108 @@
+:root {
+    --brand: #6a5cff;
+    --brand-2: #8ee3ff;
+    --bg-light: #f5f7fb;
+    --bg-dark: #0f1222;
+    --glass: rgba(255,255,255,.08);
+}
+
+html[data-theme="light"] {
+    --text: #111;
+    --muted: #6b7280;
+    --bg: var(--bg-light);
+    --card: #fff;
+    --border: rgba(17,24,39,.08);
+    --nav: linear-gradient(135deg,#3b82f6 0%, #8b5cf6 100%);
+}
+
+html[data-theme="dark"] {
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --bg: var(--bg-dark);
+    --card: #171a2e;
+    --border: rgba(255,255,255,.08);
+    --nav: linear-gradient(135deg,#111827 0%, #1f2937 100%);
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+}
+
+.fw-800 {
+    font-weight: 800
+}
+
+.app-bg {
+    background: radial-gradient(1200px 600px at -10% -10%, rgba(106,92,255,.18), transparent 50%), radial-gradient(900px 500px at 110% 0%, rgba(142,227,255,.12), transparent 40%), var(--bg);
+}
+
+.glass-nav {
+    background: var(--nav);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: saturate(140%) blur(8px);
+}
+
+.hero-gradient {
+    background: radial-gradient(1000px 300px at 10% -10%, rgba(142,227,255,.25), transparent 40%), radial-gradient(1200px 500px at 90% -20%, rgba(106,92,255,.25), transparent 45%), linear-gradient(135deg, rgba(106,92,255,.6), rgba(11,14,34,.6));
+}
+
+.card {
+    border: 1px solid var(--border) !important;
+    background: var(--card);
+    transition: transform .2s ease, box-shadow .2s ease;
+    border-radius: 16px !important;
+}
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 60px rgba(0,0,0,.12);
+    }
+
+.badge-soft {
+    background: rgba(106,92,255,.12);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #6a5cff, #4f46e5);
+    border: none;
+}
+
+    .btn-primary:hover {
+        filter: brightness(1.05);
+    }
+
+.btn-outline-danger, .btn-outline-secondary {
+    border-radius: 10px
+}
+
+.table {
+    border-color: var(--border)
+}
+
+    .table thead th {
+        color: var(--muted);
+        font-weight: 600
+    }
+
+.form-control, .form-select {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+    .form-control:focus, .form-select:focus {
+        box-shadow: 0 0 0 .2rem rgba(106,92,255,.15);
+        border-color: #6a5cff
+    }
+
+footer.footer {
+    border-top: 1px solid var(--border)
+}

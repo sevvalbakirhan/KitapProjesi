@@ -1,0 +1,18 @@
+﻿@model BookStore.MVC.Models.Book
+@{
+    ViewBag.Title = "Kitap Detayı";
+}
+
+<h2>@Model.Title</h2>
+<img src="@Model.ImageUrl" style="max-width:200px;" />
+<p>Kategori: @ViewBag.Category</p>
+<p>Fiyat: @Model.Price ₺</p>
+<a href="/Books/Index" class="btn btn-secondary">Geri Dön</a>
+<div class="mt-3">
+    <form method="post" asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" class="d-inline">
+        <button class="btn btn-primary">Sepete Ekle</button>
+    </form>
+    <form method="post" asp-controller="Favorites" asp-action="Add" asp-route-id="@Model.Id" class="d-inline ms-1">
+        <button class="btn btn-outline-danger">Favori</button>
+    </form>
+</div>

@@ -1,0 +1,44 @@
+﻿@model List<BookStore.MVC.Models.Favorite>
+@{
+    ViewBag.Title = "Favorilerim";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (TempData["success"] is string s)
+{
+     <div class="alert alert-success">@s</div>
+}
+@if (TempData["error"] is string e)
+{
+     <div class="alert alert-danger">@e</div>
+}
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info">Henüz favori eklemediniz.</div>
+}
+else
+{
+    <div class="row">
+        @foreach (var f in Model)
+        {
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    @if (!string.IsNullOrWhiteSpace(f.Book?.ImageUrl))
+                    {
+                        <img class="card-img-top" src="@f.Book.ImageUrl" alt="@f.Book?.Title" />
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@f.Book?.Title</h5>
+                        <p class="card-text">Fiyat: @f.Book?.Price ₺</p>
+
+                        <form method="post" asp-controller="Favorites" asp-action="Remove" asp-route-id="@f.Id">
+                            <button class="btn btn-outline-danger btn-sm">Favoriden Çıkar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Admin Panel";
+}
+<h2>@ViewBag.Title</h2>
+<ul>
+    <li><a asp-area="Admin" asp-controller="Categories" asp-action="Index">Kategoriler</a></li>
+    <li><a asp-area="Admin" asp-controller="Books" asp-action="Index">Kitaplar</a></li>
+    <li><a asp-area="Admin" asp-controller="Orders" asp-action="Index">Siparişler</a></li>
+    <li><a asp-area="Admin" asp-controller="Favorites" asp-action="Index">Favoriler</a></li>
+</ul>

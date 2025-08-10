@@ -1,0 +1,29 @@
+﻿@model List<BookStore.MVC.Models.Book>
+@{
+    ViewBag.Title = "Kitaplar";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    @foreach (var book in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img src="@book.ImageUrl" class="card-img-top" alt="@book.Title" />
+                <div class="card-body">
+                    <h5 class="card-title">@book.Title</h5>
+                    <p class="card-text">Fiyat: @book.Price ₺</p>
+                    <a href="/Books/Details/@book.Id" class="btn btn-primary">Detay</a>
+                    <form method="post" asp-controller="Cart" asp-action="Add" asp-route-id="@book.Id" class="d-inline">
+                        <button class="btn btn-sm btn-primary">Sepete Ekle</button>
+                    </form>
+
+                    <form method="post" asp-controller="Favorites" asp-action="Add" asp-route-id="@book.Id" class="d-inline ms-1">
+                        <button class="btn btn-sm btn-outline-danger">Favori</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

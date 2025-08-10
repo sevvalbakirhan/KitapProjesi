@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Bize Ulaşın";
+}
+<h2>@ViewBag.Title</h2>
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success">@TempData["success"]</div>
+}
+
+<form method="post" class="row g-3">
+    <div class="col-md-6">
+        <label class="form-label">Ad Soyad</label>
+        <input name="name" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">E-posta</label>
+        <input name="email" type="email" class="form-control" required />
+    </div>
+    <div class="col-12">
+        <label class="form-label">Mesaj</label>
+        <textarea name="message" class="form-control" rows="4" required></textarea>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Gönder</button>
+    </div>
+</form>

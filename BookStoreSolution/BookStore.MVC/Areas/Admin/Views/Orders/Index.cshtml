@@ -1,0 +1,36 @@
+﻿@model List<BookStore.MVC.Areas.Admin.Controllers.OrderRow>
+@{
+    ViewBag.Title = "Siparişler";
+}
+<h2>@ViewBag.Title</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info">Henüz sipariş bulunmuyor.</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Kullanıcı</th>
+                <th>Kitap</th>
+                <th>Adet</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var o in Model)
+            {
+                <tr>
+                    <td>@o.Id</td>
+                    <td>@(o.User?.UserName ?? o.UserId.ToString())</td>
+                    <td>@(o.Book?.Title ?? o.BookId.ToString())</td>
+                    <td>@o.Quantity</td>
+                    <td>@o.OrderDate.ToString("g")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

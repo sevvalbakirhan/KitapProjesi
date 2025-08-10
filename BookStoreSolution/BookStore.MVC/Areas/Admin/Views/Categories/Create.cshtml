@@ -1,0 +1,30 @@
+﻿@model BookStore.MVC.Models.Category
+
+@{
+    ViewBag.Title = "Yeni Kategori Ekle";
+}
+
+<h2>Yeni Kategori Ekle</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="Name">Kategori Adı</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Açıklama</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a href="@Url.Action("Index", "Categories")" class="btn btn-secondary">Geri</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

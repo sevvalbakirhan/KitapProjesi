@@ -1,0 +1,60 @@
+﻿@model List<BookStore.MVC.Models.CartItem>
+@{
+    ViewBag.Title = "Sepet"; var total = Model.Sum(x => x.Price * x.Quantity);
+}
+
+<h2>Sepet</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Sepetiniz boş.</div>
+}
+else
+{
+    <table class="table align-middle">
+        <thead>
+            <tr>
+                <th>Ürün</th>
+                <th>Adet</th>
+                <th>Birim Fiyat</th>
+                <th>Tutar</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            @if (!string.IsNullOrWhiteSpace(x.ImageUrl))
+                            {
+                                <img src="@x.ImageUrl" style="height:60px" />
+                            }
+                            <div>@x.Title</div>
+                        </div>
+                    </td>
+                    <td>
+                        <form method="post" asp-action="Update" class="d-flex gap-2">
+                            <input type="hidden" name="id" value="@x.BookId" />
+                            <input type="number" name="qty" value="@x.Quantity" min="1" class="form-control" style="width:80px" />
+                            <button class="btn btn-sm btn-outline-secondary">Güncelle</button>
+                        </form>
+                    </td>
+                    <td>@x.Price.ToString("0.00") ₺</td>
+                    <td>@(x.Price * x.Quantity).ToString("0.00") ₺</td>
+                    <td>
+                        <form method="post" asp-action="Remove" asp-route-id="@x.BookId">
+                            <button class="btn btn-sm btn-outline-danger">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between">
+        <div class="fs-5">Toplam: <strong>@total.ToString("0.00") ₺</strong></div>
+        <a class="btn btn-success" asp-action="Checkout">Siparişi Tamamla</a>
+    </div>
+}

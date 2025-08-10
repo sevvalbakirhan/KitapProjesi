@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Giriş Yap";
+}
+<h2 class="mb-3">@ViewBag.Title</h2>
+
+@if (TempData["error"] is string e)
+{
+     <div class="alert alert-danger">@e</div>
+}
+
+<form asp-action="Login" method="post" class="row g-3 col-lg-6">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+
+    <div class="col-12">
+        <label class="form-label">E-posta</label>
+        <input name="email" type="email" class="form-control" required />
+    </div>
+
+    <div class="col-12">
+        <label class="form-label">Şifre</label>
+        <input name="password" type="password" class="form-control" required />
+    </div>
+
+    <div class="col-12">
+        <button class="btn btn-primary">Giriş</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
+    </div>
+</form>

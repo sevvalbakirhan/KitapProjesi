@@ -1,0 +1,36 @@
+﻿@model List<BookStore.MVC.Models.CartItem>
+@{
+    ViewBag.Title = "Siparişi Tamamla"; var total = Model.Sum(x => x.Price * x.Quantity);
+}
+
+<h2>Siparişi Tamamla</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ürün</th>
+            <th>Adet</th>
+            <th>Birim</th>
+            <th>Tutar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Title</td>
+                <td>@x.Quantity</td>
+                <td>@x.Price.ToString("0.00") ₺</td>
+                <td>@(x.Price * x.Quantity).ToString("0.00") ₺</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="mb-3 fs-5">Genel Toplam: <strong>@total.ToString("0.00") ₺</strong></div>
+
+<form method="post" asp-action="CheckoutConfirm">
+    @Html.AntiForgeryToken()
+    <button class="btn btn-primary">Onayla ve Öde (Simülasyon)</button>
+    <a class="btn btn-secondary" asp-action="Index">Geri</a>
+</form>

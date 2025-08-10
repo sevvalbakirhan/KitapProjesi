@@ -1,0 +1,21 @@
+﻿@model List<BookStore.MVC.Models.Category>
+
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    @foreach (var category in Model)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@category.Name</h5>
+                    <p class="card-text">@category.Description</p>
+                    <a href="/Categories/Details/@category.Id" class="btn btn-primary">Detay</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
