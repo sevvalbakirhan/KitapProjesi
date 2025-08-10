@@ -8,6 +8,8 @@ Kitap, kategori, kullanıcı, sipariş ve favori verilerini yöneten RESTful ser
 - ✅ Swagger UI ile API test imkânı
 - ✅ DTO kullanımı ile veri alışverişinin sadeleştirilmesi
 - ✅ CORS yapılandırması ile güvenli istemci erişimi
+
+  
 2️⃣ BookStore.MVC — Kullanıcı Arayüzü
 Kitapları inceleme, sepete ekleme, favorilere alma ve satın alma işlemlerinin yapıldığı MVC tabanlı web arayüzüdür.
 - ✅ ASP.NET Core MVC ile kullanıcı dostu arayüz
